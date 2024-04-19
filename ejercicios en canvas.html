@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujo en Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="1" width="400" height="400"></canvas>
+<canvas id="2" width="400" height="400"></canvas>
+<canvas id="3" width="400" height="400"></canvas>
+<canvas id="4" width="400" height="400"></canvas>
+<canvas id="5" width="400" height="400"></canvas>
+<canvas id="6" width="400" height="400"></canvas>
+<canvas id="7" width="400" height="400"></canvas>
+<script>
+    let canvas1 = document.getElementById("1");
+    let ctx1 = canvas1.getContext("2d");
+    ctx1.beginPath();
+    for (let i = 0; i <= 400; i += 10) {
+        ctx1.arc(i, 200, 200, 0, 2 * Math.PI, false);
+        ctx1.moveTo(210 + i, 200)
+    }
+    ctx1.closePath();
+    ctx1.stroke();
+
+    let canvas2 = document.getElementById("2");
+    let ctx2 = canvas2.getContext("2d");
+    ctx2.beginPath();
+    for (let j = 0; j <= 400; j += 10) {
+        ctx2.moveTo(0, j);
+        for (let i = 10; i <= 400; i += 10) {
+            let coordenadaY = (i / 10).toFixed(0);
+            ctx2.lineTo(i, coordenadaY % 2 == 0 ? j : j + 10);
+        }
+    }
+    ctx2.stroke();
+
+    let canvas3 = document.getElementById("3");
+    let ctx3 = canvas3.getContext("2d");
+    ctx3.beginPath()
+    for (let i = 0; i <= 400; i += 10) {
+        ctx3.moveTo(i, 0);
+        ctx3.lineTo(i, 400);
+    }
+    for (let i = 0; i <= 400; i += 10) {
+        ctx3.moveTo(0, i);
+        ctx3.lineTo(400, i);
+    }
+    ctx3.stroke();
+
+    let canvas4 = document.getElementById("4");
+    let context4 = canvas4.getContext("2d");
+    context4.strokeRect(0, 0, 400, 400);
+    context4.beginPath();
+    for (let i = 0; i <= 400; i += 10) {
+        context4.moveTo(i, 0);
+        context4.lineTo(400, 400 - i);
+    }
+    for (let i = 10; i <= 400; i += 10) {
+        context4.moveTo(0, i);
+        context4.lineTo(400 - i, 400);
+    }
+    context4.stroke();
+
+
+    let canvas5 = document.getElementById("5");
+    let contexto5 = canvas5.getContext("2d");
+    contexto5.strokeRect(0, 0, 400, 400);
+    contexto5.beginPath()
+    for (let j = 0; j <= 400; j += 10) {
+        for (let i = 0; i <= 400; i += 10) {
+            contexto5.moveTo(i, 10 + j);
+            contexto5.lineTo(10 + i, 10 + j);
+            contexto5.lineTo(5 + i, 0 + j);
+            contexto5.lineTo(i, 10 + j);
+        }
+    }
+    contexto5.stroke();
+
+    let canvas6 = document.getElementById("6");
+    let contexto6 = canvas6.getContext("2d");
+    contexto6.strokeRect(0, 0, 400, 400);
+
+    /*contexto6.beginPath()
+    contexto6.arc(200, 200, 200, 0.5 * Math.PI, 1.5 * Math.PI, false);
+    contexto6.stroke()
+    contexto6.beginPath()
+    contexto6.arc(200, 210, 190, 0.5 * Math.PI, 1.5 * Math.PI, true);
+    contexto6.stroke()*/
+
+    /* contexto6.beginPath()
+     contexto6.arc(200, 200, 180, 0.5 * Math.PI, 1.5 * Math.PI, false);
+     contexto6.stroke()
+     contexto6.beginPath()
+     contexto6.arc(200, 210, 170, 0.5 * Math.PI, 1.5 * Math.PI, true);
+     contexto6.stroke()*/
+
+    for (let i = 0; i <= 190; i += 20) {
+        contexto6.beginPath()
+        contexto6.arc(200, 200, 200 - i, 0.5 * Math.PI, 1.5 * Math.PI, false);
+        contexto6.stroke()
+        contexto6.beginPath()
+        contexto6.arc(200, 210, 190 - i, 0.5 * Math.PI, 1.5 * Math.PI, true);
+        contexto6.stroke()
+    }
+
+    let canvas7 = document.getElementById("7");
+    let contexto7 = canvas7.getContext("2d");
+    contexto7.textAlign="center";
+    contexto7.textBaseline="top";
+    contexto7.font="bold 100px verdana";
+    contexto7.strokeText("💅👄💅",200,200);
+    contexto7.strokeText("👁️ 👁️",200,100);
+
+</script>
+</body>
+</html>
