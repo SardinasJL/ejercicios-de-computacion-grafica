@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Ejercicio 1</h1>
+<canvas id="canvas1" width="400" height="400"></canvas>
+<h1>Ejercicio 2</h1>
+<canvas id="canvas2" width="400" height="400"></canvas>
+<h1>Ejercicio 3</h1>
+<canvas id="canvas3" width="400" height="400"></canvas>
+<h1>Ejercicio 4</h1>
+<canvas id="canvas4" width="400" height="400"></canvas>
+<script>
+    let canvas1 = document.getElementById("canvas1");
+    let contexto1 = canvas1.getContext("2d");
+    contexto1.strokeRect(0, 0, 400, 400);
+    contexto1.fillStyle = "yellow"
+    contexto1.beginPath();
+    contexto1.arc(200, 200, 200, 0.25 * Math.PI, 1.75 * Math.PI, false);
+    contexto1.lineTo(200, 200);
+    contexto1.closePath();
+    contexto1.fill();
+    contexto1.fillStyle = "black"
+    contexto1.beginPath();
+    contexto1.arc(150, 100, 20, 0, 2 * Math.PI, false);
+    contexto1.closePath();
+    contexto1.fill()
+
+    let canvas2 = document.getElementById("canvas2");
+    let contexto2 = canvas2.getContext("2d");
+    contexto2.strokeRect(0, 0, 400, 400);
+    contexto2.beginPath();
+    for (let i = 0; i <= 400; i += 10) {
+        contexto2.moveTo(i, 0);
+        contexto2.lineTo(400 + i, 400);
+        contexto2.moveTo(0, i);
+        contexto2.lineTo(400, 400 + i);
+    }
+    contexto2.closePath();
+    contexto2.stroke();
+
+    let canvas3 = document.getElementById("canvas3");
+    let contexto3 = canvas3.getContext("2d");
+    contexto3.strokeRect(0, 0, 400, 400);
+    for (let j = 0; j <= 400; j += 10) {
+        for (let i = 0; i <= 400; i += 10) {
+            contexto3.beginPath();
+            contexto3.moveTo(0 + i, 10 + j);
+            contexto3.lineTo(10 + i, 10 + j);
+            contexto3.lineTo(5 + i, 0 + j);
+            contexto3.closePath();
+            contexto3.stroke();
+        }
+    }
+
+    let canvas4 = document.getElementById("canvas4");
+    let contexto4 = canvas4.getContext("2d");
+    contexto4.strokeRect(0, 0, 400, 400);
+    for (let i = 0; i < 190; i += 20) {
+        contexto4.beginPath();
+        contexto4.arc(200, 200, 200-i, 0.5 * Math.PI, 1.5 * Math.PI, false)
+        contexto4.stroke();
+        contexto4.beginPath();
+        contexto4.arc(200, 210, 190-i, 1.5 * Math.PI, 0.5 * Math.PI, false)
+        contexto4.stroke();
+    }
+
+
+</script>
+</body>
+</html>

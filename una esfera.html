@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="esfera"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/three@0.145.0/build/three.min.js"></script>
+<script>
+    //Configuramos la scene
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    let renderer = new THREE.WebGLRenderer({canvas: document.getElementById("esfera")});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.z = 3;
+
+
+    //Cargar una textura (opcional)
+    let textureLoader = new THREE.TextureLoader();
+    let texture = textureLoader.load('https://www.academiataure.com/wp-content/uploads/2023/07/textura.jpg');
+
+    //Creamos un objeto
+    let geometry = new THREE.SphereGeometry(1, 20, 20);
+    //let material = new THREE.MeshBasicMaterial({color: "magenta", wireframe: true});
+    let material = new THREE.MeshBasicMaterial({map: texture});
+    let sphere = new THREE.Mesh(geometry, material);
+    
+    //Agregar el objeto a la escena
+    scene.add(sphere);
+
+    function animate(){
+        requestAnimationFrame(animate);
+        sphere.rotation.y+=0.01;
+        renderer.render(scene,camera);
+    }
+    animate();
+
+    //Renderizar la escena
+    //renderer.render(scene, camera);
+
+
+</script>
+</body>
+</html>
